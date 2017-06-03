@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="hu">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta http-equiv="Content-Language" content="hu-HU" />
+		<meta name="keywords" content="tárgygráf, pannon egyetem, pe, bme, pte, pécs, műszaki, műegyetem, tanterv, mintatanterv, egyetem, pannon, gráf, kredit, félév, tárgyak, tárgy, tantárgy, előfeltétel, előtanulmány, előtanulmányi rend, ráépülés" />
+		<meta name="description" content="Interaktív tanulmányi előrehaladás vizualizáció" />
+		<title>Programtervező informatikus - Pannon Egyetem | Tárgygráf</title>
+		<meta property="og:title" content="Programtervező informatikus - Pannon Egyetem | Tárgygráf" />
+		<meta property="og:description" content="Interaktív tanulmányi előrehaladás vizualizáció" />
+		<meta property="og:image" content="http://targygraf.hu/assets/img/cimer/pe_small.png" />
+		<meta property="og:type" content="website" />
+		<meta property="fb:admins" content="1412307634" />
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<link rel="icon" type="image/png" href="http://pe.targygraf.hu/icon.png" />
+		<link rel="apple-touch-icon" href="http://pe.targygraf.hu/icon.png" />
+		<link media="all" type="text/css" rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:300&amp;subset=latin,latin-ext">
+		<link media="all" type="text/css" rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+		<link media="all" type="text/css" rel="stylesheet" href="http://pe.targygraf.hu/assets/css/core.css?v=2014-06-17_4">
+		<link media="all" type="text/css" rel="stylesheet" href="http://pe.targygraf.hu/assets/css/targygraf.css?v=2014-01-30">
+		<link media="all" type="text/css" rel="stylesheet" href="http://pe.targygraf.hu/assets/css/tipsy.css">
+		<script type="text/javascript">
+			(function(d, s, id) {
+				var js, fjs = d.getElementsByTagName(s)[0];
+				if (d.getElementById(id)) return;
+				js = d.createElement(s); js.id = id;
+				js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=610081139063354";
+				fjs.parentNode.insertBefore(js, fjs);
+			}(document, 'script', 'facebook-jssdk'));
+
+			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+				(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+				m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+			})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+			ga('create', 'UA-3084378-17', 'targygraf.hu');
+			ga('send', 'pageview');
+		</script>
+	</head>
+	<body>
+		<div id="fb-root"></div>
+
+		<div id="takar"></div>
+		<div id="gombok">
+
+	<div id="share" class="gomb" title="Állapot megosztása" data-url="http://pe.targygraf.hu/ajax/save" data-szak="2"><i class="fa fa-fw fa-share-alt"></i></div>
+	<div id="reset" class="gomb" title="Adatok törlése"><i class="fa fa-fw fa-power-off"></i></div>
+	<a href="http://pe.targygraf.hu" class="gomb" title="Egyetem"><i class="fa fa-fw fa-university"></i></a>
+
+		</div>
+
+		<div id="container">
+
+			<div id="like" class="fb-like" data-href="https://www.facebook.com/targygraf" data-layout="standard" data-action="recommend" data-show-faces="false" data-share="false"></div>
+
+			<div id="dark">
+
+			<img src="http://pe.targygraf.hu/assets/img/cimer/pe.svg" id="cimer" alt="Pannon Egyetem c&iacute;mer">
+
+
+				<h1>Pannon Egyetem - Programtervező informatikus BSc - nappali tagozat tanterve<div class="course-date">Tanterv: 2013. 04. 09.</div></h1>			</div>
+
+			<div id="help">
+	<div class="helptargy" title="Nem teljesítetted az előfeltételeket.">Nem vehető fel</div>
+	<div class="helptargy felveheto" title="Teljesített az előfeltételeket,&lt;br /&gt;lehetőséged van felvenni a tárgyat.">Felvehető</div>
+	<div class="helptargy felvett" title="Felvetted a tárgyat.">Felvett</div>
+	<div class="helptargy teljesitett" title="Teljesítetted a tárgyat.">Teljesített</div>
+	<div class="helptargy raepules" title="Azon tárgyak melyek a kiválasztott&lt;br /&gt;tantárgyra épülnek.">Ráépülő</div>
+	<div class="helptargy elofeltetel" title="Kiválasztott tárgy felvételéhez&lt;br /&gt;szükséges előfeltételek.">Előfeltétel</div>
+</div>		<div id="progressbar" title="0 %">
+	<div id="kesz_progress" class="teljesitett"></div><div id="felvett_progress" class="felvett"></div>
+</div>		<div id="kredit-display">
+	<div id="kredit_teljesitett"></div>
+	<div id="kredit_szabad-cont">
+		<div id="kredit_szabad-text">Teljesített szabadon választható</div>
+		<div id="kredit_szabad-highlight">
+			<span id="kredit_szabad-minus" class="muted">-</span>
+			<b><span id="kredit_szabad">0</span> kredit</b>
+			<span id="kredit_szabad-plus">+</span>
+		</div>
+		<span id="kredit_overflow" title="Kreditek melyekkel túlteljesítetted a követeleményeket"></span>
+	</div>
+	<div id="kredit_felvett"></div>
+</div>		<div class="content" data-specialis="0">
+
+
+	<div class="felev" data-id="____12">
+		<div class="felev-title">1. félév</div>
+								<div class="targy" title="6 kredit - VEMIMAB144A" data-id="VEMIMAB144A" data-kod="VEMIMAB144A" data-kredit="6" data-references="" data-elofeltetelek-szama="0" data-elofeltetelek="">
+			Matematikai analízis I.					</div>
+						<div class="targy" title="4 kredit - VEMIMAB143A" data-id="VEMIMAB143A" data-kod="VEMIMAB143A" data-kredit="4" data-references="" data-elofeltetelek-szama="0" data-elofeltetelek="">
+			Az informatika logikai és algebrai alapjai					</div>
+						<div class="targy" title="3 kredit - VEMKMA1143V" data-id="VEMKMA1143V" data-kod="VEMKMA1143V" data-kredit="3" data-references="" data-elofeltetelek-szama="0" data-elofeltetelek="">
+			Lineáris algebra					</div>
+						<div class="targy" title="4 kredit - VEMIVIB112A" data-id="VEMIVIB112A" data-kod="VEMIVIB112A" data-kredit="4" data-references="" data-elofeltetelek-szama="0" data-elofeltetelek="">
+			Bevezetés a számítástechnikába					</div>
+						<div class="targy" title="4 kredit - VEMISAB144A" data-id="VEMISAB144A" data-kod="VEMISAB144A" data-kredit="4" data-references="" data-elofeltetelek-szama="0" data-elofeltetelek="">
+			Programozás alapjai					</div>
+						<div class="targy" title="4 kredit - VEMISAB154R" data-id="VEMISAB154R" data-kod="VEMISAB154R" data-kredit="4" data-references="" data-elofeltetelek-szama="0" data-elofeltetelek="">
+			Programozás I.					</div>
+						<div class="targy" title="2 kredit - VEMIVIB132W" data-id="VEMIVIB132W" data-kod="VEMIVIB132W" data-kredit="2" data-references="" data-elofeltetelek-szama="0" data-elofeltetelek="">
+			Web programozás					</div>
+						<div class="targy" title="4 kredit - VEGTGAB114M" data-id="VEGTGAB114M" data-kod="VEGTGAB114M" data-kredit="4" data-references="" data-elofeltetelek-szama="0" data-elofeltetelek="">
+			Közgazdaságtan					</div>
+						<div class="targy" title="0 kredit - VEMKLE1120A" data-id="000116" data-kod="VEMKLE1120A" data-kredit="0" data-references="" data-elofeltetelek-szama="0" data-elofeltetelek="">
+			Angol I.					</div>
+						<div class="targy" title="0 kredit - VEPETO1122A" data-id="000117" data-kod="VEPETO1122A" data-kredit="0" data-references="" data-elofeltetelek-szama="0" data-elofeltetelek="">
+			Testnevelés I.					</div>
+
+
+				<div class="muted">
+			∑ 31 kredit 		</div>
+
+	</div>
+
+
+	<div class="felev" data-id="____13">
+		<div class="felev-title">2. félév</div>
+								<div class="targy" title="4 kredit - VEMIMAB244M&lt;hr /&gt;&bull; Matematikai anal&iacute;zis I.&lt;br /&gt;" data-id="VEMIMAB244M" data-kod="VEMIMAB244M" data-kredit="4" data-references="" data-elofeltetelek-szama="1" data-elofeltetelek="VEMIMAB144A">
+			Matematikai analízis II.					</div>
+						<div class="targy" title="3 kredit - VETKMA1243D&lt;hr /&gt;&bull; Az informatika logikai &eacute;s algebrai alapjai&lt;br /&gt;" data-id="VETKMA1243D" data-kod="VETKMA1243D" data-kredit="3" data-references="" data-elofeltetelek-szama="1" data-elofeltetelek="VEMIMAB143A">
+			Diszkrét matematika					</div>
+						<div class="targy" title="4 kredit - VEMISA3144A&lt;hr /&gt;&bull; Matematikai anal&iacute;zis I.&lt;br /&gt;&bull; Programoz&aacute;s I.&lt;br /&gt;&bull; Diszkr&eacute;t matematika &lt;u&gt;felv&eacute;tele&lt;/u&gt;&lt;br /&gt;" data-id="VEMISA3144A" data-kod="VEMISA3144A" data-kredit="4" data-references="" data-elofeltetelek-szama="3" data-elofeltetelek="VEMIMAB144A,VEMISAB154R,#VETKMA1243D">
+			Adatstruktúrák és algoritmusok					</div>
+						<div class="targy" title="4 kredit - VETKMA1244O&lt;hr /&gt;&bull; Line&aacute;ris algebra&lt;br /&gt;" data-id="VETKMA1244O" data-kod="VETKMA1244O" data-kredit="4" data-references="" data-elofeltetelek-szama="1" data-elofeltetelek="VEMKMA1143V">
+			Operációkutatás					</div>
+						<div class="targy" title="4 kredit - VEMISA2254B&lt;hr /&gt;&bull; Programoz&aacute;s alapjai&lt;br /&gt;&bull; Programoz&aacute;s I.&lt;br /&gt;" data-id="VEMISA2254B" data-kod="VEMISA2254B" data-kredit="4" data-references="" data-elofeltetelek-szama="2" data-elofeltetelek="VEMISAB144A,VEMISAB154R">
+			Programozás II.					</div>
+						<div class="targy" title="4 kredit - VEMISAB144O&lt;hr /&gt;&bull; Bevezet&eacute;s a sz&aacute;m&iacute;t&aacute;stechnik&aacute;ba&lt;br /&gt;&bull; Programoz&aacute;s alapjai&lt;br /&gt;" data-id="VEMISAB144O" data-kod="VEMISAB144O" data-kredit="4" data-references="" data-elofeltetelek-szama="2" data-elofeltetelek="VEMIVIB112A,VEMISAB144A">
+			Operációs rendszerek					</div>
+						<div class="targy" title="4 kredit - VEMISAB243E&lt;hr /&gt;&bull; Az informatika logikai &eacute;s algebrai alapjai&lt;br /&gt;" data-id="VEMISAB243E" data-kod="VEMISAB243E" data-kredit="4" data-references="" data-elofeltetelek-szama="1" data-elofeltetelek="VEMIMAB143A">
+			A digitális számítás elmélete					</div>
+						<div class="targy" title="3 kredit - VEMIKNB113A&lt;hr /&gt;&bull; Bevezet&eacute;s a sz&aacute;m&iacute;t&aacute;stechnik&aacute;ba&lt;br /&gt;" data-id="000125" data-kod="VEMIKNB113A" data-kredit="3" data-references="" data-elofeltetelek-szama="1" data-elofeltetelek="VEMIVIB112A">
+			Számítógép-architektúrák					</div>
+						<div class="targy" title="0 kredit - VEMIKNB113A&lt;hr /&gt;&bull; Angol I.&lt;br /&gt;" data-id="VEMIKNB113A" data-kod="VEMIKNB113A" data-kredit="0" data-references="" data-elofeltetelek-szama="1" data-elofeltetelek="000116">
+			Angol II.					</div>
+						<div class="targy" title="0 kredit - VEMKLE12X0A" data-id="000127" data-kod="VEMKLE12X0A" data-kredit="0" data-references="" data-elofeltetelek-szama="0" data-elofeltetelek="">
+			Angol nyelvi kollokvium					</div>
+						<div class="targy" title="0 kredit - VEPETO2222A&lt;hr /&gt;&bull; Testnevel&eacute;s I.&lt;br /&gt;" data-id="000128" data-kod="VEPETO2222A" data-kredit="0" data-references="" data-elofeltetelek-szama="1" data-elofeltetelek="000117">
+			Testnevelés II.					</div>
+
+
+				<div class="muted">
+			∑ 30 kredit 		</div>
+
+	</div>
+
+
+	<div class="felev" data-id="____14">
+		<div class="felev-title">3. félév</div>
+								<div class="targy" title="4 kredit - VEMKMA1144C&lt;hr /&gt;&bull; Line&aacute;ris algebra&lt;br /&gt;&bull; Matematikai anal&iacute;zis II.&lt;br /&gt;" data-id="VEMKMA1144C" data-kod="VEMKMA1144C" data-kredit="4" data-references="" data-elofeltetelek-szama="2" data-elofeltetelek="VEMKMA1143V,VEMIMAB244M">
+			Numerikus módszerek					</div>
+						<div class="targy" title="4 kredit - VEMKMA1344B&lt;hr /&gt;&bull; Matematikai anal&iacute;zis I.&lt;br /&gt;" data-id="VEMKMA1344B" data-kod="VEMKMA1344B" data-kredit="4" data-references="" data-elofeltetelek-szama="1" data-elofeltetelek="VEMIMAB144A">
+			Valószínűségszámítás és matematikai statisztika					</div>
+						<div class="targy" title="5 kredit - VEMISAB154B&lt;hr /&gt;&bull; Adatstrukt&uacute;r&aacute;k &eacute;s algoritmusok&lt;br /" data-id="VEMISAB154B" data-kod="VEMISAB154B" data-kredit="5" data-references="" data-elofeltetelek-szama="1" data-elofeltetelek="VEMISA3144A">
+			Adatbáziskezelő rendszerek I.					</div>
+						<div class="targy" title="2 kredit - VEMIKN1252P" data-id="VEMIKN1252P" data-kod="VEMIKN1252P" data-kredit="2" data-references="" data-elofeltetelek-szama="0" data-elofeltetelek="">
+			Számítógépes perifériák					</div>
+						<div class="targy" title="5 kredit - VEMISAB244S&lt;hr /&gt;&bull; Programoz&aacute;s I.&lt;br /&gt;" data-id="VEMISAB244S" data-kod="VEMISAB244S" data-kredit="5" data-references="" data-elofeltetelek-szama="1" data-elofeltetelek="VEMISAB154R">
+			Szoftvertechnológia					</div>
+						<div class="targy" title="5 kredit - VEMIVIB134J&lt;hr /&gt;&bull; Programoz&aacute;s alapjai&lt;br /&gt;&bull; Programoz&aacute;s I.&lt;br /&gt;" data-id="VEMIVIB134J" data-kod="VEMIVIB134J" data-kredit="5" data-references="" data-elofeltetelek-szama="2" data-elofeltetelek="VEMISAB144A,VEMISAB154R">
+			Java programozás I.					</div>
+						<div class="targy" title="5 kredit - VEMISAB254T&lt;hr /&gt;&bull; Programoz&aacute;s II.&lt;br /&gt;" data-id="VEMISAB254T" data-kod="VEMISAB254T" data-kredit="5" data-references="" data-elofeltetelek-szama="1" data-elofeltetelek="VEMISA2254B">
+			Korszerű programozási technikák					</div>
+						<div class="targy" title="3 kredit - VEMIVIB242P&lt;hr /&gt;&bull; Programoz&aacute;s II.&lt;br /&gt;" data-id="VEMIVIB242P" data-kod="VEMIVIB242P" data-kredit="3" data-references="" data-elofeltetelek-szama="1" data-elofeltetelek="VEMISA2254B">
+			Programozási módszertan					</div>
+						<div class="targy" title="0 kredit - VEMKLE2120A&lt;hr /&gt;&bull; Angol II.&lt;br /&gt;" data-id="000138" data-kod="VEMKLE2120A" data-kredit="0" data-references="" data-elofeltetelek-szama="1" data-elofeltetelek="VEMIKNB113A">
+			Angol III.					</div>
+						<div class="targy" title="0 kredit - VEMKLE22X0A" data-id="000139" data-kod="VEMKLE22X0A" data-kredit="0" data-references="" data-elofeltetelek-szama="0" data-elofeltetelek="">
+			Angol nyelvi záróvizsga					</div>
+						<div class="targy" title="0 kredit - VEPETO3122A&lt;hr /&gt;&bull; Testnevel&eacute;s II.&lt;br /&gt;" data-id="000140" data-kod="VEPETO3122A" data-kredit="0" data-references="" data-elofeltetelek-szama="1" data-elofeltetelek="000128">
+			Testnevelés III.					</div>
+
+
+				<div class="muted">
+			∑ 30 kredit 		</div>
+
+	</div>
+
+
+	<div class="felev" data-id="____15">
+		<div class="felev-title">4. félév</div>
+						<div class="targy" title="2 kredit - VEMISAB212M&lt;hr /&gt;&bull; Programoz&aacute;s II.&lt;br /&gt;" data-id="VEMISAB212M" data-kod="VEMISAB212M" data-kredit="2" data-references="" data-elofeltetelek-szama="2" data-elofeltetelek="VEMISA2254B">
+			Szoftvermodellezés és tesztelés					</div>
+						<div class="targy" title="3 kredit - VEMIVIB232A&lt;hr /&gt;&bull; Adatb&aacute;zis-kezelő rendszerek elm&eacute;lete (angol nyelven)&lt;br /&gt;" data-id="VEMIVIB232A" data-kod="VEMIVIB232A" data-kredit="3" data-references="" data-elofeltetelek-szama="1" data-elofeltetelek="VEMISAB154B">
+			Adatbáziskezelő rendszerek II.					</div>
+						<div class="targy" title="3 kredit - VEMISAB256A&lt;hr /&gt;&bull; Adatb&aacute;zis-kezelő rendszerek elm&eacute;lete (angol nyelven)&lt;br /&gt;" data-id="VEMIVIB132A" data-kod="VEMISAB256A" data-kredit="3" data-references="" data-elofeltetelek-szama="1" data-elofeltetelek="VEMIVIB232A">
+			Korszerű adatbázis technológiák 					</div>
+						<div class="targy" title="2 kredit - VEMIMA4152P&lt;hr /&gt;&bull; Matematikai anal&iacute;zis I.&lt;br /&gt;&bull; Line&aacute;ris algebra&lt;br /&gt;" data-id="VEMIMA4152P" data-kod="VEMIMA4152P" data-kredit="2" data-references="" data-elofeltetelek-szama="2" data-elofeltetelek="VEMIMAB144A,VEMKMA1143V">
+			Matematikai programcsomagok					</div>
+						<div class="targy" title="2 kredit - VEMISA3242M&lt;hr /&gt;&bull; Az informatika logikai &eacute;s algebrai alapjai&lt;br /&gt;" data-id="VEMISA3242M" data-kod="VEMISA3242M" data-kredit="2" data-references="" data-elofeltetelek-szama="1" data-elofeltetelek="VEMIMAB143A">
+			Mesterséges intelligencia alapjai					</div>
+						<div class="targy" title="5 kredit - VEMIINB154H&lt;hr /&gt;&bull; Programoz&aacute;s I.&lt;br /&gt;" data-id="VEMIINB154H" data-kod="VEMIINB154H" data-kredit="5" data-references="" data-elofeltetelek-szama="1" data-elofeltetelek="VEMISAB154R">
+			Számítógép-hálózatok I.					</div>
+						<div class="targy" title="0 kredit - VEMKLE2220A&lt;hr /&gt;&bull; Angol III.&lt;br /&gt;" data-id="000150" data-kod="VEMKLE2220A" data-kredit="0" data-references="" data-elofeltetelek-szama="1" data-elofeltetelek="000138">
+			Angol IV.					</div>
+						<div class="targy" title="0 kredit - VEPETO4222A&lt;hr /&gt;&bull; Testnevel&eacute;s III.&lt;br /&gt;" data-id="000151" data-kod="VEPETO4222A" data-kredit="0" data-references="" data-elofeltetelek-szama="1" data-elofeltetelek="000140">
+			Testnevelés IV.					</div>
+
+
+				<div class="muted">
+			∑ 30 kredit 		</div>
+
+	</div>
+
+
+	<div class="felev" data-id="____16">
+		<div class="felev-title">5. félév</div>
+						<div class="targy" title="4 kredit - VEMIMAB223F&lt;hr /&gt;&bull; Programoz&aacute;si technik&aacute;k &eacute;s modellez&eacute;s&lt;br /&gt;" data-id="VEMIMAB223F" data-kod="VEMIMAB223F" data-kredit="4" data-references="" data-elofeltetelek-szama="1" data-elofeltetelek="VEMISAB212M">
+			Szoftverfejlesztés					</div>
+						<div class="targy" title="5 kredit - VEMIINB354B&lt;hr /&gt;&bull; Oper&aacute;ci&oacute;s rendszerek&lt;br /&gt;&bull; Sz&aacute;m&iacute;t&oacute;g&eacute;p-h&aacute;l&oacute;zatok I.&lt;br //&gt;&bull; Angol nyelvi kollokvium&lt;br /&gt;" data-id="VEMIINB354B" data-kod="VEMIINB354B" data-kredit="5" data-references="" data-elofeltetelek-szama="3" data-elofeltetelek="VEMISAB144O,VEMIINB154H,000127">
+			Informatikai biztonság	(angol nyelven)				</div>
+						<div class="targy" title="4 kredit - VEMIPIB13xT&lt;hr /&gt;&bull; Adatb&aacute;zis-kezelő rendszerek elm&eacute;lete I.&lt;br /&gt;&bull; Java programoz&aacute;s I.&lt;br /&gt;&bull; Szoftvermodellezés és tesztelés&lt;br /&gt;" data-id="VEMIPIB13xT" data-kod="VEMIPIB13xT" data-kredit="4" data-references="" data-elofeltetelek-szama="3" data-elofeltetelek="VEMISAB154B,VEMIVIB134J,VEMISAB212M">
+			Tervezés I.					</div>
+
+
+				<div class="muted">
+			∑ 29 kredit 		</div>
+
+	</div>
+
+
+	<div class="felev" data-id="____17">
+		<div class="felev-title">6. félév</div>
+						<div class="targy" title="5 kredit - VEMIVIB234Z&lt;hr /&gt;&bull; Sz&aacute;m&iacute;t&oacute;g&eacute;p-architekt&uacute;r&aacute;k&lt;br /&gt;&bull; Java programoz&aacute;s I.&lt;br /&gt;" data-id="VEMIVIB234Z" data-kod="VEMIVIB234Z" data-kredit="5" data-references="" data-elofeltetelek-szama="2" data-elofeltetelek="000125,VEMIVIB134J">
+			Párhuzamos programozás					</div>
+						<div class="targy" title="3 kredit - VEMIVIB234Z&lt;hr /&gt;&bull; Web programozás&lt;br /" data-id="000159" data-kod="VEMIVIB234Z" data-kredit="3" data-references="" data-elofeltetelek-szama="1" data-elofeltetelek="VEMIVIB132W">
+			Web programozás II.					</div>
+						<div class="targy" title="16 kredit - VEMIIN316xs&lt;hr /&gt;&bull; Tervezés I.&lt;br /&gt;" data-id="006457" data-kod="VEMIIN316xs" data-kredit="16" data-references="" data-elofeltetelek-szama="1" data-elofeltetelek="VEMIPIB13xT">
+			Tervezés II.					</div>
+
+
+				<div class="muted">
+			∑ 30 kredit 		</div>
+
+	</div>
+
+	<div class="felev" data-id="____44">
+		<div class="felev-title">Egyéb</div>
+					<div class="targy" title="4 kredit" data-id="006456" data-kod="szabad" data-kredit="4" data-references="" data-elofeltetelek-szama="0" data-elofeltetelek="">
+			Szabadon választható					</div>
+					<div class="targy" title="2 kredit" data-id="000156" data-kod="szabad" data-kredit="2" data-references="" data-elofeltetelek-szama="0" data-elofeltetelek="">
+			Szabadon választható					</div>
+					<div class="targy" title="4 kredit" data-id="000137" data-kod="szabad" data-kredit="4" data-references="" data-elofeltetelek-szama="0" data-elofeltetelek="">
+			Szabadon választható					</div>
+					<div class="targy" title="" data-id="000149" data-kod="reference" data-kredit="4" data-references="____18,____19" data-elofeltetelek-szama="0" data-elofeltetelek="">
+			Differenciált szakmai ismeretek					</div>
+					<div class="targy" title="" data-id="000155" data-kod="reference" data-kredit="10" data-references="____18,____19" data-elofeltetelek-szama="0" data-elofeltetelek="">
+			Differenciált szakmai ismeretek					</div>
+				<div class="muted">
+			∑ 30 kredit 		</div>
+
+	</div>
+
+	</div><div class="content" data-specialis="1">
+	<div class="felev" data-id="____18">
+		<div class="felev-title">Differenciált szakmai ismeretek</div>
+								<div class="targy" title="2 kredit - VETKCO4132N&lt;hr /&gt;&bull; Programoz&aacute;si technik&aacute;k &eacute;s modellez&eacute;s&lt;br /&gt;" data-id="000161" data-kod="VETKCO4132N" data-kredit="2" data-references="" data-elofeltetelek-szama="1" data-elofeltetelek="VEMISAB212M">
+			A .NET framework és programozása C# nyelven					</div>
+						<div class="targy" title="2 kredit - VETKCO5332A&lt;hr /&gt;&bull; Alkalmaz&aacute;sfejleszt&eacute;s ORACLE k&ouml;rnyezetben&lt;br /&gt;" data-id="000162" data-kod="VETKCO5332A" data-kredit="2" data-references="" data-elofeltetelek-szama="1" data-elofeltetelek="000164">
+			Adatbázis adminisztráció Oracle-n					</div>
+						<div class="targy" title="2 kredit - VETKCO5322F&lt;hr /&gt;&bull; Adatb&aacute;ziskezel&eacute;s&lt;br /&gt;" data-id="000163" data-kod="VETKCO5322F" data-kredit="2" data-references="" data-elofeltetelek-szama="1" data-elofeltetelek="VEMIVIB232A">
+			Adatbáziskezelés és rendszerfelügyelet MS SQL szerver					</div>
+						<div class="targy" title="2 kredit - VETKCO5322O&lt;hr /&gt;&bull; Adatb&aacute;ziskezel&eacute;s&lt;br /&gt;" data-id="000164" data-kod="VETKCO5322O" data-kredit="2" data-references="" data-elofeltetelek-szama="1" data-elofeltetelek="VEMIVIB232A">
+			Alkalmazásfejlesztés ORACLE környezetben					</div>
+						<div class="targy" title="4 kredit - VEMICO5134C&lt;hr /&gt;&bull; Sz&aacute;m&iacute;t&oacute;g&eacute;p-h&aacute;l&oacute;zatok I. &lt;u&gt;felv&eacute;tele&lt;/u&gt;&lt;br /&gt;" data-id="000165" data-kod="VEMICO5134C" data-kredit="4" data-references="" data-elofeltetelek-szama="1" data-elofeltetelek="#VEMIINB154H">
+			CISCO I.					</div>
+						<div class="targy" title="4 kredit - VEMICO5234C&lt;hr /&gt;&bull; CISCO I.&lt;br /&gt;" data-id="000166" data-kod="VEMICO5234C" data-kredit="4" data-references="" data-elofeltetelek-szama="1" data-elofeltetelek="000165">
+			CISCO II.					</div>
+						<div class="targy" title="2 kredit - VEMICO5332F&lt;hr /&gt;&bull; Programoz&aacute;s I.&lt;br /&gt;" data-id="000167" data-kod="VEMICO5332F" data-kredit="2" data-references="" data-elofeltetelek-szama="1" data-elofeltetelek="VEMISAB154R">
+			Funkcionális programnyelvek					</div>
+						<div class="targy" title="4 kredit - VEMIKNB554G&lt;hr /&gt;&bull; Matematikai anal&iacute;zis II.&lt;br /&gt;&bull; Programoz&aacute;s II.&lt;br /&gt;" data-id="000168" data-kod="VEMIKNB554G" data-kredit="4" data-references="" data-elofeltetelek-szama="2" data-elofeltetelek="VEMIMAB244M,VEMISA2254B">
+			Számítógépes grafika és design					</div>
+						<div class="targy" title="4 kredit - VEMIIR5354I&lt;hr /&gt;&bull; Informatikai biztons&aacute;g&lt;br /&gt;" data-id="000169" data-kod="VEMIIR5354I" data-kredit="4" data-references="" data-elofeltetelek-szama="1" data-elofeltetelek="VEMIINB354B">
+			Informatikai rendszerek konfigurálása és üzemeltetése					</div>
+						<div class="targy" title="2 kredit - VETKMA5122S&lt;hr /&gt;&bull; Val&oacute;sz&iacute;nűs&eacute;gsz&aacute;m&iacute;t&aacute;s &eacute;s matematikai statisztika&lt;br /&gt;" data-id="000170" data-kod="VETKMA5122S" data-kredit="2" data-references="" data-elofeltetelek-szama="1" data-elofeltetelek="VEMKMA1344B">
+			Statisztikai programcsomagok					</div>
+						<div class="targy" title="4 kredit - VEMKSA5144S&lt;hr /&gt;&bull; Mesters&eacute;ges intelligencia alapjai&lt;br /&gt;" data-id="000171" data-kod="VEMKSA5144S" data-kredit="4" data-references="" data-elofeltetelek-szama="1" data-elofeltetelek="VEMISA3242M">
+			Szakértő rendszerek					</div>
+						<div class="targy" title="4 kredit - VEMKKN5244A&lt;hr /&gt;&bull; Szoftvertechnol&oacute;gia&lt;br /&gt;" data-id="000172" data-kod="VEMKKN5244A" data-kredit="4" data-references="" data-elofeltetelek-szama="1" data-elofeltetelek="VEMISAB244S">
+			Virtuális valóság és alkalmazásai					</div>
+
+
+
+	</div>
+
+
+	<div class="felev" data-id="____19">
+		<div class="felev-title">Differenciált szakmai ismeretek</div>
+								<div class="targy" title="2 kredit - VETKCO5332W&lt;hr /&gt;&bull; Web programoz&aacute;s&lt;br /&gt;" data-id="000173" data-kod="VETKCO5332W" data-kredit="2" data-references="" data-elofeltetelek-szama="1" data-elofeltetelek="VEMIVIB132W">
+			Web-alapú adatbáziskezelés PHP nyelven					</div>
+						<div class="targy" title="2 kredit - VETKCO5322M&lt;hr /&gt;&bull; Programoz&aacute;s II.&lt;br /&gt;&bull; Web-alap&uacute; rendszerek fejleszt&eacute;se&lt;br /&gt;" data-id="000174" data-kod="VETKCO5322M" data-kredit="2" data-references="" data-elofeltetelek-szama="2" data-elofeltetelek="VEMISA2254B,000159">
+			XML programozás					</div>
+						<div class="targy" title="4 kredit - VEMIVI5344I&lt;hr /&gt;&bull; Adatb&aacute;zis-kezelő rendszerek elm&eacute;lete (angol nyelven)&lt;br /&gt;" data-id="000175" data-kod="VEMIVI5344I" data-kredit="4" data-references="" data-elofeltetelek-szama="1" data-elofeltetelek="VEMISAB154B">
+			SAP vállalatirányítási rendszer alapjai					</div>
+						<div class="targy" title="4 kredit - VEMIVI5354P&lt;hr /&gt;&bull; SAP v&aacute;llalatir&aacute;ny&iacute;t&aacute;si rendszer alapjai&lt;br /&gt;" data-id="000176" data-kod="VEMIVI5354P" data-kredit="4" data-references="" data-elofeltetelek-szama="1" data-elofeltetelek="000175">
+			SAP vállalatirányítási rendszer II. programozási alapok					</div>
+						<div class="targy" title="4 kredit - VEMISA5334F&lt;hr /&gt;&bull; Programoz&aacute;s II.&lt;br /&gt;" data-id="000177" data-kod="VEMISA5334F" data-kredit="4" data-references="" data-elofeltetelek-szama="1" data-elofeltetelek="VEMISA2254B">
+			Nyílt forráskódú szoftverfejlesztés					</div>
+						<div class="targy" title="4 kredit - VEMISA5334L&lt;hr /&gt;&bull; Oper&aacute;ci&oacute;s rendszerek&lt;br /&gt;&bull; Sz&aacute;m&iacute;t&oacute;g&eacute;p-h&aacute;l&oacute;zatok I.&lt;br /&gt;" data-id="000178" data-kod="VEMISA5334L" data-kredit="4" data-references="" data-elofeltetelek-szama="2" data-elofeltetelek="VEMISAB144O,VEMIINB154H">
+			Linux rendszergazda ismeretek					</div>
+						<div class="targy" title="4 kredit - VEMISA3354V&lt;hr /&gt;&bull; Adatb&aacute;ziskezel&eacute;s&lt;br /&gt;" data-id="000179" data-kod="VEMISA3354V" data-kredit="4" data-references="" data-elofeltetelek-szama="1" data-elofeltetelek="VEMIVIB232A">
+			Integrált vállalatirányítási rendszerek					</div>
+						<div class="targy" title="4 kredit - VEMISA3344R&lt;hr /&gt;&bull; Szoftvertechnol&oacute;gia&lt;br /&gt;&bull; Korszerű programoz&aacute;si technik&aacute;k&lt;br /&gt;" data-id="000180" data-kod="VEMISA3344R" data-kredit="4" data-references="" data-elofeltetelek-szama="2" data-elofeltetelek="VEMISAB244S,VEMISAB254T">
+			A rendszerfejlesztés korszerű módszerei					</div>
+						<div class="targy" title="2 kredit - VEMIMAB512L&lt;hr /&gt;&bull; Az informatika logikai &eacute;s algebrai alapjai&lt;br /&gt;&bull; Programoz&aacute;s II.&lt;br /&gt;" data-id="000181" data-kod="VEMIMAB512L" data-kredit="2" data-references="" data-elofeltetelek-szama="2" data-elofeltetelek="VEMIMAB143A,VEMISA2254B">
+			Bevezetés a lágy számítás módszereibe					</div>
+						<div class="targy" title="4 kredit - VEMIVIB554J&lt;hr /&gt;&bull; Java programoz&aacute;s&lt;br /&gt;" data-id="000182" data-kod="VEMIVIB554J" data-kredit="4" data-references="" data-elofeltetelek-szama="1" data-elofeltetelek="VEMIVIB134J">
+			Java programozás II.					</div>
+						<div class="targy" title="4 kredit - VEMKIR5144Q&lt;hr /&gt;&bull; Bevezet&eacute;s a sz&aacute;m&iacute;t&aacute;stechnik&aacute;ba&lt;br /&gt;" data-id="000183" data-kod="VEMKIR5144Q" data-kredit="4" data-references="" data-elofeltetelek-szama="1" data-elofeltetelek="VEMIVIB112A">
+			Információs rendszerek minőségbiztosítása					</div>
+						<div class="targy" title="3 kredit - VEMIINB533V&lt;hr /&gt;&bull; Oper&aacute;ci&oacute;s rendszerek&lt;br /&gt;" data-id="000184" data-kod="VEMIINB533V" data-kredit="3" data-references="" data-elofeltetelek-szama="1" data-elofeltetelek="VEMISAB144O">
+			Virtualizációs technológiák a gyakorlatban					</div>
+						<div class="targy" title="2 kredit - VEMISA5312a&lt;hr /&gt;&bull; Programoz&aacute;s II.&lt;br /&gt;&bull; Kutat&aacute;s-fejleszt&eacute;s&lt;br /&gt;" data-id="006458" data-kod="VEMISA5312a" data-kredit="2" data-references="" data-elofeltetelek-szama="2" data-elofeltetelek="VEMISA2254B,000160">
+			Az informatika ipari alkalmazásai					</div>
+
+
+
+	</div>
+
+</div>
+			<div id="blank"></div>
+			<div id="footer">
+				<a href="http://valentinx.hu" target="_blank"><img src="http://valentinx.hu/valentinx.svg" alt="valentinx" height="20" style="height: 20px;" alt="valentinx" /></a>
+				<div class="disclaimer">Az oldalon található információk nem tekinthetőek hivatalos forrásnak.</div>
+			</div>
+		</div>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+				<script src="http://pe.targygraf.hu/assets/js/jquery.tipsy.min.js"></script>
+				<script src="http://pe.targygraf.hu/assets/js/targygraf.min.js?v=2014-06-17_5"></script>
+			</body>
+</html>

@@ -1,0 +1,314 @@
+* { outline: none; }
+.content,
+.content *,
+#kredit_szabad-minus,
+#kredit_szabad-plus {
+	-o-user-select: none;
+	-webkit-user-select: none;
+	-moz-user-select: -moz-none;
+	-khtml-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+a { text-decoration: none; }
+a img { border: 0; }
+
+.radius5 { border: 1px solid silver; -moz-border-radius: 3px; -webkit-border-radius: 3px; border-radius: 3px; -webkit-box-shadow: 0 0 3px #CCC; -moz-box-shadow: 0 0 3px #CCC; box-shadow: 0 0 3px #CCC; }
+.betutipus_5 { text-shadow: 1px 1px 5px #555; font-family: 'Bree Serif', sans-serif; }
+.betutipus_1 { text-shadow: 1px 1px 1px white; font-family: 'Bree Serif', sans-serif; }
+.opacity25 { -moz-opacity:.25; filter:alpha(opacity=25); opacity:.25; }
+.opacity50 { -moz-opacity:.50; filter:alpha(opacity=50); opacity:.50; }
+.opacity75 { -moz-opacity:.75; filter:alpha(opacity=75); opacity:.75; }
+
+.text-left { text-align: left; }
+.text-center { text-align: center; }
+.text-right { text-align: right; }
+
+html, body {
+	margin: 0;
+	padding: 0;
+	height: 100%;
+}
+
+body {
+	background-color: #E6E6E6;
+	font-size: 11px;
+	font-family: 'Open Sans', sans-serif;
+	letter-spacing: -0.3px;
+	text-align: center;
+	min-width: 1010px;
+}
+
+body:before { 
+	content: "";
+	position: fixed;
+	top: -10px;
+	left: 0;
+	width: 100%;
+	height: 10px;
+	z-index: 100;
+	-webkit-box-shadow: 0px 0px 10px rgba(0,0,0,.8);
+	-moz-box-shadow: 0px 0px 10px rgba(0,0,0,.8);
+	box-shadow: 0px 0px 10px rgba(0,0,0,.8);
+}
+
+#like {
+	position: absolute;
+	top: 10px;
+	left: 4px;
+	z-index: 1;
+	overflow: hidden;
+}
+
+#container {
+	min-height: 100%;
+	position: relative;
+}
+
+#blank {
+	height: 60px;
+}
+
+#footer {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	height: 40px;
+	z-index: 0;
+}
+
+#footer .disclaimer {
+	margin-top: 2px;
+	margin-bottom: 2px;
+	color: #666;
+}
+
+#dark {
+	padding-bottom: 5px;
+	margin-bottom: 5px;
+	position: relative;
+	min-height: 64px;
+	background-color: #d35400;
+}
+
+#felhivas {
+	padding: 4px 0;
+	font-size: 12px;
+	letter-spacing: 0.4px;
+	line-height: 13px;
+	color: #444;
+}
+
+#felhivas a { color: black; }
+#felhivas a:hover { color: blue; }
+
+
+h1 {
+	margin-bottom: 0;
+	margin-top: 0;
+	padding: 0;
+	font-size: 18px;
+	color: white;
+}
+
+.small {
+	font-size: 70%;
+}
+
+#takar {
+	-moz-opacity:.75; filter:alpha(opacity=75); opacity:.75;
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	background-color: black;
+	z-index: 101;
+	display: none;
+}
+
+#list {
+	display: inline-block;
+	background-color: #1abc9c;
+	margin-top: 8px;
+	margin-bottom: 20px;
+	padding: 3px;
+	position: relative;
+	z-index: 2;
+	box-shadow: rgb(19, 26, 33) 1px 1px,
+    rgb(19, 26, 33) 2px 2px,
+    rgb(19, 26, 33) 3px 3px,
+    rgb(19, 26, 33) 4px 4px,
+    rgb(19, 26, 33) 5px 5px,
+    rgb(19, 26, 33) 6px 6px,
+    rgb(19, 26, 33) 7px 7px,
+    rgb(19, 26, 33) 8px 8px,
+    rgb(19, 26, 33) 9px 9px,
+    rgb(19, 26, 33) 10px 10px;
+    margin-right: -10px;
+}
+
+#list > #szakok {
+	line-height: 25px;
+}
+
+#list > #szakok > .kar {
+	margin-bottom: 2px;
+}
+
+#list > #szakok > .kar > .kar-title {
+	font-family: sans-serif;
+	font-size: 13px;
+	letter-spacing: 0;
+	margin-bottom: -5px;
+}
+
+#list > #szakok > .kar > a {
+	text-decoration: none;
+	padding: 3px;
+	font-size: 11px;
+	color: black;
+	border-color: #aaa;
+	background-color: white;
+	-webkit-transition: all 0.1s linear;
+	-o-transition: all 0.1s linear;
+	-moz-transition: all 0.1s linear;
+	-ms-transition: all 0.1s linear;
+	-kthtml-transition: all 0.1s linear;
+	transition: all 0.1s linear;
+}
+
+#list > #szakok > .kar > a.aktiv { background-color: #2ecc71; }
+
+#list > #szakok > .kar > a:hover {
+	background-color: #9b59b6;
+	color: white;
+}
+
+#gombok {
+	position: fixed;
+	right: 5px;
+	bottom: 8.5px;
+	z-index: 1;
+}
+
+#gombok .gomb {
+	display: block;
+	cursor: pointer;
+	margin-top: 4px;
+	-webkit-transition: all 0.2s linear;
+	-o-transition: all 0.2s linear;
+	-moz-transition: all 0.2s linear;
+	-ms-transition: all 0.2s linear;
+	-kthtml-transition: all 0.2s linear;
+	transition: all 0.2s linear;
+	font-size: 32px;
+	border-radius: 10px;
+	text-align: center;
+	color: black;
+}
+
+#gombok #share {
+	display: none;
+}
+
+#gombok .gomb:hover {
+	background-color: black;
+	color: white;
+}
+
+#gombok #reset:hover { background-color: #f88; }
+
+.admin {
+	border: 1px solid #ccc;
+	margin: 10px auto;
+	font-size: 14px;
+	text-align: left;
+}
+
+.admin td {
+	padding: 5px 15px;
+}
+
+input[type="password"],
+input[type="text"] {
+	height: 34px;
+	padding: 6px 12px;
+	font-size: 14px;
+	line-height: 1.428571429;
+	color: #555;
+	vertical-align: middle;
+	background-color: #fff;
+	background-image: none;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
+	box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
+	-webkit-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+	transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+}
+
+input[type="password"]:focus,
+input[type="text"]:focus {
+	border-color: #66afe9;
+	outline: 0;
+	-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075),0 0 8px rgba(102,175,233,0.6);
+	box-shadow: inset 0 1px 1px rgba(0,0,0,0.075),0 0 8px rgba(102,175,233,0.6);
+}
+
+.lead {
+	margin-bottom: 10px;
+	font-size: 21px;
+	font-weight: 200;
+	line-height: 1.4;
+}
+
+.btn {
+	display: inline-block;
+	padding: 6px 12px;
+	margin-bottom: 0;
+	font-size: 14px;
+	font-weight: normal;
+	line-height: 1.428571429;
+	text-align: center;
+	white-space: nowrap;
+	vertical-align: middle;
+	cursor: pointer;
+	background-image: none;
+	border: 1px solid transparent;
+	border-radius: 4px;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	-o-user-select: none;
+	user-select: none;
+	text-decoration: none;
+}
+
+.btn-primary {
+	color: #fff;
+	background-color: #428bca;
+	border-color: #357ebd;
+}
+
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active {
+	color: #fff;
+	background-color: #3276b1;
+	border-color: #285e8e;
+}
+
+.btn-success {
+	color: #fff;
+	background-color: #5cb85c;
+	border-color: #4cae4c;
+}
+
+.btn-success:hover,
+.btn-success:focus,
+.btn-success:active {
+	color: #fff;
+	background-color: #47a447;
+	border-color: #398439;
+}

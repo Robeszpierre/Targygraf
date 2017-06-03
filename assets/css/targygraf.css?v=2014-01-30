@@ -1,0 +1,326 @@
+#cim {
+	background-image: url('../img/gradient.png');
+	background-position: center bottom;
+	background-repeat: repeat-x;
+	margin-top: 15px;
+}
+
+.targy, .helptargy, .targy-edit {
+	background-color: white;
+	color: #666;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	margin: 2px 0;
+	padding: 4px 3px;
+	position: relative;
+	word-wrap: break-word;
+}
+
+.targy { cursor: pointer; }
+.helptargy { width: auto; }
+
+.targy:hover {
+	
+}
+
+.targy-edit hr {
+	margin: 0;
+	border: 0;
+	border-bottom: 1px solid #666;
+}
+
+.targy-edit .kiemelt {
+	background-color: red;
+	color: white;
+}
+
+.felveheto { background-color: #a8d3ff; color: #444; }
+.felvett { background-color: #3498db; color: white; }
+.teljesitett { background-color: #2ecc71; color: #222; }
+
+.raepules { background-color: #f1c40f; color: #000; }
+.elofeltetel { background-color: #e67e22; color: #000; }
+
+.end {
+	background-image: url('../img/end-sign.png');
+	background-position: right center;
+	background-repeat: repeat-y;
+	border-right: 0;
+}
+
+.teljesitett-oszlop { background-color: rgba(144, 238, 144, 0.25); }
+.tick { color: green; font-size: 16pt; display: none; }
+
+.felev {
+	display: inline-block;
+	vertical-align: top;
+	margin-left: 1.5px;
+	margin-right: 1.5px;
+	position: relative;
+	width: 140px;
+}
+
+.felev.felev-teljesitett {
+	-moz-opacity: .6;
+	filter: alpha(opacity=60);
+	opacity: .6;
+}
+
+.felev.felev-teljesitett:hover {
+	-moz-opacity: 1;
+	filter: alpha(opacity=100);
+	opacity: 1;
+}
+
+.felev .felev-title {
+	margin-bottom: 4px;
+}
+
+.content {
+	margin-bottom: 8px;
+	position: relative;
+}
+
+#snapshot_link {
+	font-variant: small-caps;
+	font-weight: bold;
+	font-size: 28pt;
+	display: inline-block;
+	margin-top: 0;
+	margin-bottom: 0;
+	text-shadow: 0px 1px 3px white;
+	color: black;
+}
+
+#snapshot_link:hover { color: #00E; }
+
+#snapshot_details {
+	color: #444;
+	padding: 3px;
+	background-color: #eee;
+	background-image: url('../img/noise.png');
+	display: inline-block;
+}
+
+#kredit-display {
+	color: #555;
+	font-size: 16px;
+	width: 800px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 8px;
+}
+
+#kredit-display #kredit_szabad-cont {
+	width: 300px;
+	display: inline-block;
+	position: relative;
+}
+
+#kredit-display #kredit_szabad-highlight {
+	position: relative;
+	display: inline-block;
+	padding: 2px;
+}
+
+#kredit-display #kredit_szabad-text {
+	font-size: 12px;
+	margin-top: -6px;
+}
+
+#kredit-display #kredit_szabad-minus,
+#kredit-display #kredit_szabad-plus {
+	display: inline-block;
+	width: 25px;
+	height: 25px;
+	background-color: #ccc;
+	border-radius: 20px;
+	line-height: 25px;
+	text-align: center;
+	vertical-align: 1px;
+	margin: 0 3px;
+	cursor: pointer;
+}
+
+#kredit-display #kredit_szabad-plus {
+	background-color: #a8d3ff;
+	color: #444;
+}
+
+#kredit-display #kredit_szabad-minus:hover,
+#kredit-display #kredit_szabad-plus:hover {
+	background-color: #8e44ad;
+	color: white;
+}
+
+#kredit-display  #kredit_szabad-minus.muted,
+#kredit-display  #kredit_szabad-plus.muted {
+	cursor: default;
+	background-color: white;
+	color: #999;
+}
+
+#kredit-display #kredit_teljesitett { float: left;}
+#kredit-display #kredit_felvett { float: right;}
+
+#kredit-display #kredit_overflow {
+	font-size: 12px;
+	position: absolute;
+	top: 18px;
+	right: 15px;
+}
+
+hr { border: 1px solid black; }
+
+#help {
+	position: fixed;
+	bottom: 5px;
+	left: 3px;
+}
+
+#snapshot_url { color: white; }
+#snapshot_url:hover { color: yellow; }
+
+#time {
+	text-align: center;
+	font-variant: small-caps;
+	font-size: 12px;
+	position: absolute;
+	bottom: 2px;
+	width: 100%;
+}
+
+#error {
+	font-size: 14pt;
+	position: fixed;
+	top: 40%;
+	width: 100%;
+	left: 0;
+	background-color: rgb(80, 80, 80);
+	background-color: rgba(80, 80, 80, 0.8);
+	color: black;
+	z-index: 101;
+	padding: 5px;
+	display: none;
+}
+
+#error img { vertical-align: text-bottom; }
+
+#lenyit {
+	cursor: pointer;
+	font-size: 10pt;
+}
+
+#cimer {
+	max-height: 90%;
+	max-width: 300px;
+	position: absolute;
+	right: 5px;
+	top: 5%;
+	text-align: right;
+	z-index: 1;
+}
+
+#targygraf_cimer {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 50px;
+}
+
+.uni {
+	margin: 8px;
+	padding-top: 4px;
+	padding-left: 4px;
+	padding-right: 4px;
+	padding-bottom: 1px;
+	text-align: center;
+	display: inline-block;
+	font-size: 12px;
+	width: 160px;
+	color: blue;
+	border-radius: 10px;
+	vertical-align: text-bottom;
+	position: relative;
+}
+
+.uni:hover {
+	background-color: #ADD8E6;
+}
+
+.uni .uni-cimer-cont {
+	height: 140px;
+	margin-bottom: 30px;
+	font-size: 0;
+}
+
+.uni-no-cimer .uni-cimer-cont {
+	height: 60px;
+}
+
+.uni .uni-cimer-helper {
+	display: inline-block;
+	vertical-align: middle;
+	height: 100%;
+}
+
+.uni .uni-cimer-alt {
+	font-size: 45px;
+	text-align: center;
+	color: black;
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.uni .uni-cimer {
+	max-height: 100%;
+	max-width: 100%;
+	border: 0;
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.uni .uni-nev {
+	position: absolute;
+	bottom: 4px;
+	left: 0;
+	width: 100%;
+	text-align: center;
+	line-height: 11px;
+}
+
+#progressbar {
+	width: 800px;
+	height: 15px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 8px;
+	text-align: center;
+	font-weight: bold;
+	white-space: nowrap;
+	text-align: left;
+	color: #222;
+	border-right: 2px solid #666;
+	border-left: 2px solid #666;
+}
+
+#kesz_progress,
+#felvett_progress {
+	height: 100%;
+	display: inline-block;
+	font-size: 10px;
+	overflow: hidden;
+	text-align: center;
+	vertical-align: top;
+	white-space: normal;
+	opacity: 0.85;
+	filter:alpha(opacity=85);
+}
+
+.het {
+	font-size: 15px;
+}
+
+.muted { color: #444; }
+.course-date { color: #ccc; font-size: 14px; }
